@@ -138,8 +138,6 @@ export default class ExtensionCamlCommandSet extends BaseListViewCommandSet<IExt
                 '</Where>' +
             '</Query>' +
           '</View>'});
-
-          console.log(items); //debug
           
           for(let i=0; i<items.length; i++) {
             (async () => {
