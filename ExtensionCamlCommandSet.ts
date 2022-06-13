@@ -49,11 +49,13 @@ export default class ExtensionCamlCommandSet extends BaseListViewCommandSet<IExt
     }
   }
 
-  public async onExecute(event: IListViewCommandSetExecuteEventParameters): Promise<void> { // fonction appelée lors d'un clic sur le bouton correspondant à la commande
+  // fonction appelée lors d'un clic sur le bouton correspondant à la commande
+  public async onExecute(event: IListViewCommandSetExecuteEventParameters): Promise<void> { 
     switch (event.itemId) {
       case 'COMMAND_1':
                      
-        const sp = spfi().using(SPFx(this.context)); // "Behavior" ou "Comportement" traduit en français, correspond au "contexte SPFx actuel"
+        // "Behavior" ou "Comportement" traduit en français, correspond au "contexte SPFx actuel"
+        const sp = spfi().using(SPFx(this.context)); 
 
         try { 
 
@@ -99,8 +101,6 @@ export default class ExtensionCamlCommandSet extends BaseListViewCommandSet<IExt
               fileName : this.row.getValueByName("Images")["fileName"],
               serverRelativeUrl : this.row.getValueByName("Images")["serverRelativeUrl"]
             }),
-            //Attachments : this.row.getValueByName("Attachments"), // impossible de récupérer le contenu du fichier avec la ligne, on peut simplement récupérer le nombre de pièces jointes
-                                                                    // il faut utiliser une autre méthode pour ajouter une pièce jointe
             IssueloggedbyId : this.row.getValueByName("Issueloggedby")[0]["id"],
             TESTCOL1 : this.row.getValueByName("TESTCOL1"),
             TEST_x0020_COL_x0020_SITE_x0020_1 : this.row.getValueByName("TEST_x0020_COL_x0020_SITE_x0020_1"),
@@ -108,13 +108,13 @@ export default class ExtensionCamlCommandSet extends BaseListViewCommandSet<IExt
           };
 
           // Insertion de l'objet dans la liste
-          const iar : IItemAddResult = await sp.web.lists.getByTitle("Suivi des problèmes").items.add(properties);
+          const iar : IItemAddResult = await sp.web.lists.getByTitle("Suivi des problèmes").items.add(properties);*/
 
           // ---------------------------------------------------------------------
           // ||         BONUS : ajout d'une pièce jointe à un item              ||
           // ---------------------------------------------------------------------
 
-          const list = sp.web.lists.getByTitle("Suivi des problèmes");
+          /*const list = sp.web.lists.getByTitle("Suivi des problèmes");
           const items = await list.getItemsByCAMLQuery({ ViewXml :
          '<View>' +
             '<Query>'+ 
